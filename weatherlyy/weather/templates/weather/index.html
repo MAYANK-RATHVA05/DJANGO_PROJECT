@@ -1,0 +1,102 @@
+{% extends 'weather/base.html' %}
+{% load static %}
+
+{# Page Title Block #}
+{% block title %}Weatherly - Home{% endblock %}
+
+{# Optional: Add extra CSS/JS links specific to this page in the head #}
+{% block head_extra %}
+    <!-- No extra head elements needed specifically for index page currently -->
+{% endblock %}
+
+{# Main Content Block #}
+{% block content %}
+    <!-- Add background effects specific to index page -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <div id="weather-overlay"></div>
+
+    
+    <!-- Search Bar -->
+    <div class="mb-8 max-w-xl mx-auto">
+        <div class="relative">
+            <input type="text" id="city-search" placeholder="Search for a city..." class="w-full px-5 py-3 text-lg rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white/30 backdrop-blur-md placeholder-gray-600 text-gray-800">
+            <button id="search-button" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white rounded-full p-2 hover:bg-blue-600 transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+            </button>
+        </div>
+        <p id="search-error" class="text-red-400 text-center mt-2 text-sm h-4"></p>
+    </div>
+
+    <!-- Loading Spinner (Simple Text) -->
+    <div id="loading-spinner" class="flex justify-center items-center h-64 hidden">
+         <p class="text-white text-xl animate-pulse">Loading...</p>
+    </div>
+
+    <!-- Weather Display Area (Initially hidden) -->
+    <div id="weather-content" class="hidden">
+
+        <!-- Current Weather Card (Clickable, data-city attribute for navigation) -->
+        <div id="current-weather-card" class="current-weather mb-8 p-6 rounded-xl shadow-lg backdrop-blur-md bg-white/10 text-white flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-8 hover:bg-white/20 transition duration-300 cursor-pointer" data-city="">
+            <!-- Inner elements made non-clickable so the card itself handles the click -->
+            <div class="text-center md:text-left pointer-events-none">
+                <h2 id="city-name" class="text-3xl font-semibold">City Name</h2>
+                <p id="weather-description" class="text-lg capitalize">Description</p>
+                <p class="text-sm">Humidity: <span id="humidity">--</span>%</p>
+                <p class="text-sm">Wind: <span id="wind-speed">--</span> m/s</p>
+            </div>
+            <div class="flex items-center space-x-4 pointer-events-none">
+                <!-- Weather Icon (Standard img tag, updated by JS) -->
+                <img id="weather-icon-img" src="" alt="Weather Icon" class="w-20 h-20 md:w-28 md:h-28 opacity-0 transition-opacity duration-300"/> {# Starts hidden #}
+                <div class="text-center">
+                    <p id="current-temp" class="text-7xl md:text-8xl font-bold gradient-text bg-gradient-to-r from-yellow-300 to-orange-400">--°</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forecast Section -->
+        <h3 class="text-2xl font-semibold text-white mb-4 text-shadow">5-Day Forecast</h3>
+        <!-- Forecast cards injected by JS will be clickable -->
+        <div id="forecast-cards" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-8">
+            <!-- Forecast cards injected here by JS -->
+        </div>
+
+        <!-- Temperature Trend Chart -->
+        <h3 class="text-2xl font-semibold text-white mb-4 text-shadow">Temperature Trend</h3>
+        <div class="p-4 rounded-lg shadow backdrop-blur-md bg-white/10">
+            <canvas id="tempChart"></canvas>
+        </div>
+
+        <!-- Map Section -->
+        <h3 class="text-2xl font-semibold text-white mt-10 mb-4 text-shadow">Location Map</h3>
+        <div id="map" class="h-64 md:h-96 rounded-lg shadow-lg z-0 backdrop-blur-md bg-white/10 p-1">
+            <!-- Leaflet Map will be initialized here by JS -->
+        </div>
+        <p id="map-error" class="text-yellow-300 text-center mt-2 text-sm h-4"></p> <!-- Placeholder for map errors -->
+
+    </div> <!-- End Weather Content -->
+
+{% endblock content %}
+
+
+{# Block for passing JavaScript variables from Django to the script #}
+{% block js_vars %}
+    <script>
+        // Define STATIC_URL again here because this block overrides the base block
+        const STATIC_URL = "{% static 'weather/' %}";
+
+        // Define other variables needed by main.js
+        const CSRF_TOKEN = "{{ csrf_token }}";
+        const WEATHER_API_URL = "{% url 'weather:get_weather_data_api' %}";
+        const AUTH_STATUS_URL = "{% url 'weather:auth_status' %}";
+        const DETAIL_PAGE_URL_BASE = "{% url 'weather:weather_detail' 'CITY_PLACEHOLDER' %}";
+    </script>
+{% endblock js_vars %}
+
+
+{# Block for loading page-specific JavaScript files #}
+{% block scripts %}
+    {# This runs AFTER the js_vars block above has defined the variables #}
+    <script src="{% static 'weather/js/main.js' %}"></script>
+{% endblock scripts %}

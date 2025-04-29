@@ -1,0 +1,138 @@
+{% extends 'weather/base.html' %}
+{% load static %}
+
+{% block title %}About Us - Weatherly{% endblock %}
+
+{% block content %}
+<div class="bg-white/20 backdrop-blur-sm rounded-lg shadow-lg p-6 md:p-8 mb-8">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 text-indigo-900">About Weatherly</h1>
+    
+    <!-- Company Description Section -->
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-4 text-indigo-800">Our Story</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-1 md:col-span-2">
+                <p class="mb-4 text-gray-800">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.
+                </p>
+                <p class="mb-4 text-gray-800">
+                    Suspendisse in orci enim. Donec suscipit ante in hendrerit placerat. Fusce blandit diam eleifend, vestibulum est at, maximus nisi. Cras et felis eros. Curabitur at dolor au velit fringilla imperdiet. Sed ex magna, laoreet eu malesuada sit amet, laoreet ut mi.
+                </p>
+            </div>
+            <div class="col-span-1 bg-blue-100 rounded-lg p-4 flex items-center justify-center">
+                <div class="text-center">
+                    <div class="text-5xl text-blue-500 mb-2">
+                        <i class="fas fa-cloud-sun"></i>
+                        <!-- Fallback for font awesome -->
+                        ☁️
+                    </div>
+                    <p class="font-semibold text-blue-700">Established 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mission Section -->
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-4 text-indigo-800">Our Mission</h2>
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500">
+            <p class="mb-4 text-gray-800 italic">
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            </p>
+            <p class="text-right text-gray-700 font-semibold">— Weatherly Team</p>
+        </div>
+        <div class="mt-6">
+            <p class="mb-4 text-gray-800">
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section>
+        <h2 class="text-2xl font-semibold mb-6 text-indigo-800">Our Team</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Team Member 1 -->
+            <div class="bg-white/50 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
+                <img src="{% static 'images/divy.jpg' %}" alt="Divy" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Divy</h3>
+                    <p class="text-indigo-600 mb-2">Project Lead</p>
+                    <p class="text-gray-700 text-sm">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Team Member 2 -->
+            <div class="bg-white/50 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
+                <img src="{% static 'images/mayank.jpg' %}" alt="Mayank" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Mayank</h3>
+                    <p class="text-indigo-600 mb-2">Backend Developer</p>
+                    <p class="text-gray-700 text-sm">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Team Member 3 -->
+            <div class="bg-white/50 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
+                <img src="{% static 'images/Krish.jpg' %}" alt="Krish" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Krish</h3>
+                    <p class="text-indigo-600 mb-2">Backend Developer</p>
+                    <p class="text-gray-700 text-sm">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Team Member 4 -->
+            <div class="bg-white/50 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-105">
+                <img src="{% static 'images/pratipalsinh.jpg' %}" alt="pratipal" class="w-full h-64 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold text-gray-800">Pratipal</h3>
+                    <p class="text-indigo-600 mb-2">Frontend Developer</p>
+                    <p class="text-gray-700 text-sm">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Contact Section -->
+<div class="bg-white/20 backdrop-blur-sm rounded-lg shadow-lg p-6 md:p-8">
+    <h2 class="text-2xl font-semibold mb-4 text-indigo-800">Contact Us</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <p class="mb-4 text-gray-800">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula:
+            </p>
+            <ul class="space-y-2 text-gray-800">
+                <li class="flex items-center">
+                    <span class="mr-2">✉️</span>
+                    <span>info@weatherly.example.com</span>
+                </li>
+                <li class="flex items-center">
+                    <span class="mr-2">📱</span>
+                    <span>+1 (555) 123-4567</span>
+                </li>
+                <li class="flex items-center">
+                    <span class="mr-2">🏢</span>
+                    <span>123 Weather Street, Cloud City, CA 94123</span>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-blue-50 rounded-lg p-4">
+            <p class="text-gray-800 mb-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <button class="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 transition duration-300">Send Us a Message</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
